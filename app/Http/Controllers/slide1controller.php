@@ -10,7 +10,7 @@ class slide1controller extends Controller
 
     public function tampil()
     {
-        return view('cv.tambah1');
+       return view('ahmad.inforrmasi,pendidikan');
     }
 
     public function store(Request $request)
