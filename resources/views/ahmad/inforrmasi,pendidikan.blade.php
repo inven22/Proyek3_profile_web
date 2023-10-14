@@ -332,7 +332,7 @@
                                     <div class="col-md-6">
                                         <input id="sertifikat" type="file" class="form-control" name="sertifikat[]"
                                             accept=".pdf, .doc, .docx, .jpg, .png" multiple required>
-                                       
+                                        <small class="text-muted">You can upload up to 3 files.</small>
                                         <ul id="sertifikat-list"></ul>
                                     </div>
                                 </div>
@@ -373,11 +373,77 @@
                                         <font size="6px">Riwayat Pekerjaan</font>
                                     </strong></center>
                                 <br>
-                                
+                                <div id="riwayat-pendidikan-container">
+                                    <div class="row mb-3">
+                                        <label for="jenjang" class="col-md-4 col-form-label text-md-end">{{ __('Jenjang:') }}</label>
+                                        <div class="col-md-6">
+                                            <select id="jenjang" class="form-control" name="jenjang[]" required>
+                                                <option value="SD">SD</option>
+                                                <option value="SMP">SMP</option>
+                                                <option value="SMA">SMA</option>
+                                                <option value="Sarjana">Sarjana</option>
+                                                <!-- Tambahkan lebih banyak opsi jenjang sesuai kebutuhan -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="universitas"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Nama Sekolah:') }}</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control jenjang" name="sekolah[]" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="gelar"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Gelar Depan :') }}</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control gelar" name="gelar[]" >
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="gelar"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Gelar Belakang :') }}</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control gelar" name="gelar_b[]" >
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="bidang_studi"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Bidang Studi:') }}</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control bidang_studi" name="bidang_studi[]"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="tanggal_mulai"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Tanggal Mulai:') }}</label>
+                                        <div class="col-md-3">
+                                            <input type="date" class="form-control tanggal_mulai"
+                                                name="tanggal_mulai[]" required>
+                                        </div>
+                                        <label for="tanggal_akhir"
+                                            class="col-md-2 col-form-label text-md-end">{{ __('Tanggal Akhir:') }}</label>
+                                        <div class="col-md-2">
+                                            <input type="date" class="form-control tanggal_akhir"
+                                                name="tanggal_akhir[]" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="deskripsi"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Deskripsi:') }}</label>
+                                        <div class="col-md-6">
+                                            <textarea class="form-control deskripsi" name="deskripsi[]" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- File Riwayat Kerja form taro dibawah sini -->
 
 
-                              
+                                <button type="button" class="btn btn-primary" id="prev4">Kembali</button>
+                                <button type="button" id="tambah-riwayat-pekerjaan" class="btn btn-primary">Tambah Riwayat
+                                    Pendidikan</button>
+                                <button type="submit" class="btn btn-primary" id="next4">Lanjut</button>
                             </div>
 
                             <!-- Slide 4 -->
@@ -403,7 +469,6 @@
     </div>
 
     <script src="{{ asset('js/index.js') }}"></script>
-   
     <script>
         document.getElementById('tambah-riwayat').addEventListener('click', function() {
             var container = document.getElementById('riwayat-pendidikan-container');
@@ -503,9 +568,7 @@
                 });
         });
 
-        //Tambah riwayat pekerjaan 
-
-     
-
+        //
     </script>
+
 @endsection
