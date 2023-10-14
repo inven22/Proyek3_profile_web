@@ -49,6 +49,7 @@ document.getElementById('next2').addEventListener('click', function() {
     // Lakukan validasi atau pengolahan data jika diperlukan
     const universitas = document.querySelectorAll('.universitas');
     const gelar = document.querySelectorAll('.gelar');
+    const gelar_b = document.querySelectorAll('.gelar_b');
     const bidangStudi = document.querySelectorAll('.bidang_studi');
     const tanggalMulai = document.querySelectorAll('.tanggal_mulai');
     const tanggalAkhir = document.querySelectorAll('.tanggal_akhir');
@@ -58,6 +59,7 @@ document.getElementById('next2').addEventListener('click', function() {
         if (
             !universitas[i].value ||
             !gelar[i].value ||
+            !gelar_b[i].value ||
             !bidangStudi[i].value ||
             !tanggalMulai[i].value ||
             !tanggalAkhir[i].value ||
@@ -81,6 +83,43 @@ document.getElementById('prev3').addEventListener('click', function() {
     document.getElementById('slide2').style.display = 'block';
     currentSlide = 2;
 });
+
+document.getElementById('next3').addEventListener('click', function() {
+    // Pindah ke Slide 4
+    document.getElementById('slide3').style.display = 'none';
+    document.getElementById('slide4').style.display = 'block';
+    currentSlide = 4;
+
+});
+
+
+
+
+// Menambahkan event listener untuk tombol "Kembali" di Slide 4
+document.getElementById('prev4').addEventListener('click', function() {
+    // Kembali ke Slide 3
+    document.getElementById('slide4').style.display = 'none';
+    document.getElementById('slide3').style.display = 'block';
+    currentSlide = 3;
+});
+
+// Menambahkan event listener untuk tombol "Lanjut" di Slide 3
+document.getElementById('next4').addEventListener('click', function() {
+    // Pindah ke Slide 4
+    document.getElementById('slide4').style.display = 'none';
+    document.getElementById('slide5').style.display = 'block';
+    currentSlide = 5;
+});
+
+
+// Menambahkan event listener untuk tombol "Kembali" di Slide 4
+document.getElementById('prev5').addEventListener('click', function() {
+    // Kembali ke Slide 3
+    document.getElementById('slide5').style.display = 'none';
+    document.getElementById('slide4').style.display = 'block';
+    currentSlide = 3;
+});
+
 
 function validateKodePos() {
     var kodePosInput = document.getElementById('kode_pos');
@@ -121,88 +160,45 @@ function updateFileList(listId, inputElement) {
     }
 }
 
-document.getElementById('tambah-riwayat').addEventListener('click', function() {
-    var container = document.getElementById('riwayat-pendidikan-container');
-    var newRow = document.createElement('div');
-    newRow.className = 'row mb-3 riwayat-pendidikan'; // Tambahkan kelas 'riwayat-pendidikan'
-    newRow.innerHTML = `
-<label for="universitas" class="col-md-4 col-form-label text-md-end">{{ __('Jenjang:') }}</label>
-<div class="col-md-6">
-    <input type="text" class="form-control universitas" name="jenjang[]" required>
-</div>
-<label for="gelar" class="col-md-4 col-form-label text-md-end">{{ __('Nama Sekolah:') }}</label>
-<div class="col-md-6">
-    <input type="text" class="form-control gelar" name="sekolah[]" required>
-</div>
-<label for="gelar" class="col-md-4 col-form-label text-md-end">{{ __('Gelar:') }}</label>
-<div class="col-md-6">
-    <input type="text" class="form-control gelar" name="gelar[]" required>
-</div>
-<label for="bidang_studi" class="col-md-4 col-form-label text-md-end">{{ __('Bidang Studi:') }}</label>
-<div class="col-md-6">
-    <input type="text" class="form-control bidang_studi" name="bidang_studi[]" required>
-</div>
-<label for="tanggal_mulai" class="col-md-4 col-form-label text-md-end">{{ __('Tanggal Mulai:') }}</label>
-<div class="col-md-2">
-    <input type="date" class="form-control tanggal_mulai" name="tanggal_mulai[]" required>
-</div>
-<label for="tanggal_akhir" class="col-md-2 col-form-label text-md-end">{{ __('Tanggal Akhir:') }}</label>
-<div class="col-md-2">
-    <input type="date" class="form-control tanggal_akhir" name="tanggal_akhir[]" required>
-</div>
-<label for="deskripsi" class="col-md-4 col-form-label text-md-end">{{ __('Deskripsi:') }}</label>
-<div class="col-md-6">
-    <textarea class="form-control deskripsi" name="deskripsi[]" required></textarea>
-</div>
-<div class="col-md-2">
-    <button type="button" class="btn btn-danger hapus-riwayat">Hapus</button>
-</div>
-`;
-    container.appendChild(newRow);
-});
+// DROPDOWN KOTA-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+document.getElementById('provinsi').addEventListener('change', function(){
+    // Mendapatkan nilai provinsi yang dipilih
+    const selectedProvinsi = this.value;
 
-document.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('hapus-riwayat')) {
-        e.target.closest('.riwayat-pendidikan').remove(); // Hapus elemen riwayat-pendidikan
-    }
-});
+    // Mendapatkan elemen dropdown kabupaten/kota
+    const kabupatenDropdown = document.getElementById('kab_kota');
 
-document.getElementById('simpan').addEventListener('click', function() {
-    var riwayatPendidikan = [];
-    var riwayatElements = document.querySelectorAll('.riwayat-pendidikan');
+    // Mengosongkan dropdown kabupaten/kota
+    kabupatenDropdown.innerHTML = '<option value="belum_memilih">Belum memilih</option>';
 
-    riwayatElements.forEach(function(riwayatElement) {
-        var jenjang = riwayatElement.querySelector('.jenjang').value;
-        var sekolah = riwayatElement.querySelector('.sekolah').value;
-        var gelar = riwayatElement.querySelector('.gelar').value;
-        var bidang_studi = riwayatElement.querySelector('.bidang_studi').value;
-        var tanggal_mulai = riwayatElement.querySelector('.tanggal_mulai').value;
-        var tanggal_akhir = riwayatElement.querySelector('.tanggal_akhir').value;
-        var deskripsi = riwayatElement.querySelector('.deskripsi').value;
-
-        riwayatPendidikan.push({
-            universitas: universitas,
-            gelar: gelar,
-            bidang_studi: bidang_studi,
-            tanggal_mulai: tanggal_mulai,
-            tanggal_akhir: tanggal_akhir,
-            deskripsi: deskripsi
+    // Menambahkan opsi kabupaten/kota berdasarkan provinsi yang dipilih
+    if (selectedProvinsi === 'Jawa Barat') {
+        // Jika provinsi Jawa Barat dipilih
+        const kabupatenKotaJawaBarat = ['Kota Bandung', 'Banjar', 'Bekasi', 'Bogor', 'Cimahi', 'Cirebon', 'Depok', 'Sukabumi', 'Tasikmalaya'];
+        kabupatenKotaJawaBarat.forEach(function(kab_kota) {
+            const option = document.createElement('option');
+            option.value = kab_kota;
+            option.text = kab_kota;
+            kabupatenDropdown.appendChild(option);
         });
-    });
-
-    // Kirim data riwayat pendidikan ke server, misalnya menggunakan fetch API atau XMLHttpRequest
-    fetch('/insert_cv', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                riwayat_pendidikan: riwayatPendidikan
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Tanggapi respons dari server di sini
-            console.log(data);
+    } else if (selectedProvinsi === 'Jawa Tengah') {
+        // Jika provinsi Jawa Tengah dipilih
+        const kabupatenKotaJawaTengah = ['magelang', 'Pekalongan', 'Salatiga', 'Semarang', 'Surakarta', 'Tegal'];
+        kabupatenKotaJawaTengah.forEach(function(kab_kota) {
+            const option = document.createElement('option');
+            option.value = kab_kota;
+            option.text = kab_kota;
+            kabupatenDropdown.appendChild(option);
         });
+    } else if (selectedProvinsi === 'Jawa Timur') {
+        const kabupatenKotaJawaTimur = ['Batu', 'Blitar', 'Kediri', 'Madiun', 'Malang', 'Mojokerto', 'Pasuruan', 'Probolinggo', 'Surabaya'];
+        kabupatenKotaJawaTimur.forEach(function(kab_kota){
+            const option = document.createElement('option');
+            option.value = kab_kota;
+            option.text = kab_kota;
+            kabupatenDropdown.appendChild(option);
+        });
+    };
 });
+
+
