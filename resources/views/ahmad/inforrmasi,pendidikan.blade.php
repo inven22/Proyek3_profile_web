@@ -145,30 +145,62 @@
 
                                 <div class="row mb-3">
                                     <label for="provinsi"
-                                        class="col-md-3 col-form-label text-md-end">{{ __('Provinsi:') }}</label>
-                                    <div class="col-md-3">
-                                        <input id="provinsi" type="text"
-                                            class="form-control @error('provinsi') is-invalid @enderror" name="provinsi"
-                                            value="{{ old('provinsi') }}" autocomplete="provinsi" autofocus required>
-                                        @error('provinsi')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                    class="col-md-3 col-form-label text-md-end">{{ __('Provinsi:') }}</label>
+                                <div class="col-md-3">
+                                    <select id="provinsi" class="form-control @error('provinsi') is-invalid @enderror"
+                                        name="provinsi" required autocomplete="provinsi" autofocus>
+                                        <option value="belum_memilih">Belum memilih</option>
+                                        <option value="Aceh">Nanggroe Aceh Darussalam</option>
+                                        <option value="Sumatra Utara">Sumatra Utara</option>
+                                        <option value="Sumatra Barat">Sumatra Barat</option>
+                                        <option value="Riau">Riau</option>
+                                        <option value="Jambi">Jambi</option>
+                                        <option value="Sumatera Selatan">Sumatera Selatan</option>
+                                        <option value="Bengkulu">Bengkulu</option>
+                                        <option value="Lampung">Lampung</option>
+                                        <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+                                        <option value="Kepulauan Riau">Kepulauan Riau</option>
+                                        <option value="DKI Jakarta">DKI Jakarta</option>
+                                        <option value="Jawa Barat">Jawa Barat</option>
+                                        <option value="Jawa Tengah">Jawa Tengah</option>
+                                        <option value="Jawa Timur">Jawa Timur</option>
+                                        <option value="DKI Yogyakarta">DKI Yogyakarta</option>
+                                        <option value="Banten">Banten</option>
+                                        <option value="Bali">Bali</option>
+                                        <option value="NTB">Nusa Tenggara Barat</option>
+                                        <option value="NTT">Nusa Tenggara Timur</option>
+                                        <option value="Sulawesi Utara">Sulawesi Utara</option>
+                                        <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                                        <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                                        <option value="Sulawesi Barat">Sulawesi Barat</option>
+                                        <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                                        <option value="Gorontalo">Gorontalo</option>
+                                        <option value="Maluku">Maluku</option>
+                                        <option value="Maluku Utara">Maluku Utara</option>
+                                        <option value="Papua">Papua</option>
+                                        <option value="Papua Barat">Papua Barat</option>
+                                    </select>
+                                    @error('provinsi')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <label for="kab_kota"
+                                class="col-md-3 col-form-label text-md-end">{{ __('Kab/Kota:') }}</label>
+                            <div class="col-md-3">
+                                <select id="kab_kota" class="form-control @error('kab_kota') is-invalid @enderror"
+                                    name="kab_kota" required autocomplete="provinsi" autofocus>
+                                    <option value="belum_memilih">Belum memilih</option>
+                                </select>
 
-                                    <label for="kab_kota"
-                                        class="col-md-3 col-form-label text-md-end">{{ __('Kabupaten/Kota:') }}</label>
-                                    <div class="col-md-3">
-                                        <input id="kab_kota" type="text"
-                                            class="form-control @error('kab_kota') is-invalid @enderror" name="kab_kota"
-                                            value="{{ old('kab_kota') }}" required autocomplete="kab_kota" autofocus>
-                                        @error('kab_kota')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                @error('kab_kota')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+    
                                 </div>
 
                                 <div class="row mb-3">
@@ -213,11 +245,15 @@
                                 <br>
                                 <div id="riwayat-pendidikan-container">
                                     <div class="row mb-3">
-                                        <label for="universitas"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Jenjang:') }}</label>
+                                        <label for="jenjang" class="col-md-4 col-form-label text-md-end">{{ __('Jenjang:') }}</label>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control universitas" name="jenjang[]"
-                                                required>
+                                            <select id="jenjang" class="form-control" name="jenjang[]" required>
+                                                <option value="SD">SD</option>
+                                                <option value="SMP">SMP</option>
+                                                <option value="SMA">SMA</option>
+                                                <option value="Sarjana">Sarjana</option>
+                                                <!-- Tambahkan lebih banyak opsi jenjang sesuai kebutuhan -->
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -229,9 +265,16 @@
                                     </div>
                                     <div class="row mb-3">
                                         <label for="gelar"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Gelar:') }}</label>
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Gelar Depan :') }}</label>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control gelar" name="gelar[]" required>
+                                            <input type="text" class="form-control gelar" name="gelar[]" >
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="gelar"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Gelar Belakang :') }}</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control gelar" name="gelar_b[]" >
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -245,7 +288,7 @@
                                     <div class="row mb-3">
                                         <label for="tanggal_mulai"
                                             class="col-md-4 col-form-label text-md-end">{{ __('Tanggal Mulai:') }}</label>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <input type="date" class="form-control tanggal_mulai"
                                                 name="tanggal_mulai[]" required>
                                         </div>
@@ -289,7 +332,7 @@
                                     <div class="col-md-6">
                                         <input id="sertifikat" type="file" class="form-control" name="sertifikat[]"
                                             accept=".pdf, .doc, .docx, .jpg, .png" multiple required>
-                                        <small class="text-muted">You can upload up to 3 files.</small>
+                                       
                                         <ul id="sertifikat-list"></ul>
                                     </div>
                                 </div>
@@ -321,8 +364,37 @@
                                 </div>
 
                                 <button type="button" class="btn btn-primary" id="prev3">Kembali</button>
+                                <button type="button" class="btn btn-primary" id="next3">Lanjut</button>
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="slide" id="slide4" style="display: none;">
+                                <!-- Konten Slide 4 -->
+                                <center><Strong>
+                                        <font size="6px">Riwayat Pekerjaan</font>
+                                    </strong></center>
+                                <br>
+                                
+                                <!-- File Riwayat Kerja form taro dibawah sini -->
+
+
+                              
+                            </div>
+
+                            <!-- Slide 4 -->
+                            <div class="slide" id="slide5" style="display: none;">
+                                <!-- Konten Slide 5 -->
+                                <center><Strong>
+                                        <font size="6px">Pengalaman</font>
+                                    </strong></center>
+                                <br>
+
+                                <!-- File Riwayat Kerja form taro dibawah sini -->
+
+
+                                <button type="button" class="btn btn-primary" id="prev5">Kembali</button>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -331,5 +403,109 @@
     </div>
 
     <script src="{{ asset('js/index.js') }}"></script>
+   
+    <script>
+        document.getElementById('tambah-riwayat').addEventListener('click', function() {
+            var container = document.getElementById('riwayat-pendidikan-container');
+            var newRow = document.createElement('div');
+            newRow.className = 'row mb-3 riwayat-pendidikan'; // Tambahkan kelas 'riwayat-pendidikan'
+            newRow.innerHTML = `
+<label for="universitas" class="col-md-4 col-form-label text-md-end">{{ __('Jenjang:') }}</label>
+<div class="col-md-6">
+    <select class="form-control" name="jenjang[]" required>
+            <option value="SD">SD</option>
+            <option value="SMP">SMP</option>
+            <option value="SMA">SMA</option>
+            <option value="Sarjana">Sarjana</option>
+            <!-- Tambahkan lebih banyak opsi jenjang sesuai kebutuhan -->
+        </select>
+</div>
+<label for="gelar" class="col-md-4 col-form-label text-md-end">{{ __('Nama Sekolah:') }}</label>
+<div class="col-md-6">
+    <input type="text" class="form-control gelar" name="sekolah[]" required>
+</div>
+<label for="gelar" class="col-md-4 col-form-label text-md-end">{{ __('Gelar Depam:') }}</label>
+<div class="col-md-6">
+    <input type="text" class="form-control gelar" name="gelar[]" required>
+</div>
+<label for="gelar_b" class="col-md-4 col-form-label text-md-end">{{ __('Gelar Belakang:') }}</label>
+<div class="col-md-6">
+    <input type="text" class="form-control gelar_b" name="gelar_b[]" required>
+</div>
+<label for="bidang_studi" class="col-md-4 col-form-label text-md-end">{{ __('Bidang Studi:') }}</label>
+<div class="col-md-6">
+    <input type="text" class="form-control bidang_studi" name="bidang_studi[]" required>
+</div>
+<label for="tanggal_mulai" class="col-md-4 col-form-label text-md-end">{{ __('Tanggal Mulai:') }}</label>
+<div class="col-md-2">
+    <input type="date" class="form-control tanggal_mulai" name="tanggal_mulai[]" required>
+</div>
+<label for="tanggal_akhir" class="col-md-2 col-form-label text-md-end">{{ __('Tanggal Akhir:') }}</label>
+<div class="col-md-2">
+    <input type="date" class="form-control tanggal_akhir" name="tanggal_akhir[]" required>
+</div>
+<label for="deskripsi" class="col-md-4 col-form-label text-md-end">{{ __('Deskripsi:') }}</label>
+<div class="col-md-6">
+    <textarea class="form-control deskripsi" name="deskripsi[]" required></textarea>
+</div>
+<div class="col-md-2">
+    <button type="button" class="btn btn-danger hapus-riwayat">Hapus</button>
+</div>
+`;
+            container.appendChild(newRow);
+        });
 
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('hapus-riwayat')) {
+                e.target.closest('.riwayat-pendidikan').remove(); // Hapus elemen riwayat-pendidikan
+            }
+        });
+
+        document.getElementById('simpan').addEventListener('click', function() {
+            var riwayatPendidikan = [];
+            var riwayatElements = document.querySelectorAll('.riwayat-pendidikan');
+
+            riwayatElements.forEach(function(riwayatElement) {
+                var jenjang = riwayatElement.querySelector('.jenjang').value;
+                var sekolah = riwayatElement.querySelector('.sekolah').value;
+                var gelar = riwayatElement.querySelector('.gelar').value;
+                var gelar_b = riwayatElement.querySelector('.gelar_b').value;
+                var bidang_studi = riwayatElement.querySelector('.bidang_studi').value;
+                var tanggal_mulai = riwayatElement.querySelector('.tanggal_mulai').value;
+                var tanggal_akhir = riwayatElement.querySelector('.tanggal_akhir').value;
+                var deskripsi = riwayatElement.querySelector('.deskripsi').value;
+
+                riwayatPendidikan.push({
+                    universitas: universitas,
+                    gelar: gelar,
+                    gelar_b: gelar_b,
+                    bidang_studi: bidang_studi,
+                    tanggal_mulai: tanggal_mulai,
+                    tanggal_akhir: tanggal_akhir,
+                    deskripsi: deskripsi
+                });
+            });
+
+            // Kirim data riwayat pendidikan ke server, misalnya menggunakan fetch API atau XMLHttpRequest
+            fetch('/insert_cv', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        riwayat_pendidikan: riwayatPendidikan
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Tanggapi respons dari server di sini
+                    console.log(data);
+                });
+        });
+
+        //Tambah riwayat pekerjaan 
+
+     
+
+    </script>
 @endsection
