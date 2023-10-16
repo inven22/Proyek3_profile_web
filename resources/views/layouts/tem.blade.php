@@ -28,7 +28,80 @@
 <body id="page-top">
 
       <!-- Page Wrapper -->
-    
+      <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Profile</sup><sup>Express</sup></div>
+            </a>
+        
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+        
+            <!-- Nav Item - Dashboard (Accessible to type 0 and type 1 users) -->
+<br>
+            <div class="sidebar-heading">
+                <center><font size="2px">Side bar menu</font></center>
+            </div>
+            <br>
+            <hr class="sidebar-divider my-0">
+        
+           
+                <!-- Nav Item - Arsip Dokumen (Only accessible to type 0 users) -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('home') }}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>My CV</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">List item :</h6>
+                        <a class="collapse-item" href="add_cv">Create CV</a>
+                        <a class="collapse-item" href="kelola_cv">Kelola CV</a>
+                        <a class="collapse-item" href="utilities-animation.html">Donwload CV</a>
+                        <a class="collapse-item" href="utilities-other.html">Salin link</a>
+                    </div>
+                </div>
+            </li>
+
+                {{-- <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cari.s') }}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Cari buku</span>
+                    </a>
+                </li> --}}
+            
+        
+          
+        
+            <!-- Divider -->
+        
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+        
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        
+        </ul>
+
+        <!-- End of Sidebar -->
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -36,35 +109,53 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-secondary topbar mb-4 static-top shadow"> 
-                    <h2>Web Profile Website</h2>
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                   
+
                      <!-- Topbar Navbar -->
-                     
                      <ul class="navbar-nav ml-auto">
-                        <nav class="navbar">
-                            <div class="container-fluid">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="home">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="add_cv">Buat Cv</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                        
+                      
+                        <!-- Dropdown - Messages -->
+                       
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                       
                            
+                          
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <div>User</div></span>
+                               
+                                   
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                               
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
                         </li>
                       
                     </ul>
-<br>
-<br>
+<div>
                 </nav>
                 <!-- End of Topbar -->
 
