@@ -16,11 +16,15 @@
             /* Atur bayangan sesuai preferensi Anda */
         }
     </style>
+
     <div class="container">
+       
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">{{ __('Tambah Cv') }}</div>
+                    <div class="card-header">{{ __('Tambah Cv') }}
+                       <center> <a href="tab_mode_insert" id="get-started-button">Coba Tab mode</a></center>
+                    </div>
 
                     <div class="card-body">
 
@@ -233,6 +237,22 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <label for="file_image"
+                                        class="col-md-3 col-form-label text-md-end">{{ __('Upload foto diri:') }}</label>
+                                    <div class="col-md-9">
+                                        <input id="file_image" type="file"
+                                            class="form-control @error('file_image') is-invalid @enderror" name="file_image"
+                                            value="{{ old('file_image') }}" required autocomplete="file_image" autofocus
+                                            onblur="validateKodePos()" required>
+                                        @error('file_image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <button type="button" class="btn btn-primary" id="next1">Lanjut</button>
                             </div>
 
@@ -310,11 +330,13 @@
 
 
                                 <br>
-
+                               
+                               
                                 <button type="button" class="btn btn-primary" id="prev2">Kembali</button>
                                 <button type="button" id="tambah-riwayat" class="btn btn-primary">Tambah Riwayat
                                     Pendidikan</button>
                                 <button type="button" class="btn btn-primary" id="next2">Lanjut</button>
+                              
                             </div>
 
                             <!-- Slide 3 -->
@@ -373,76 +395,11 @@
                                         <font size="6px">Riwayat Pekerjaan</font>
                                     </strong></center>
                                 <br>
-                                <div id="riwayat-pendidikan-container">
-                                    <div class="row mb-3">
-                                        <label for="jenjang" class="col-md-4 col-form-label text-md-end">{{ __('Jenjang:') }}</label>
-                                        <div class="col-md-6">
-                                            <select id="jenjang" class="form-control" name="jenjang[]" required>
-                                                <option value="SD">SD</option>
-                                                <option value="SMP">SMP</option>
-                                                <option value="SMA">SMA</option>
-                                                <option value="Sarjana">Sarjana</option>
-                                                <!-- Tambahkan lebih banyak opsi jenjang sesuai kebutuhan -->
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="universitas"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Nama Sekolah:') }}</label>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control jenjang" name="sekolah[]" required>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="gelar"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Gelar Depan :') }}</label>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control gelar" name="gelar[]" >
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="gelar"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Gelar Belakang :') }}</label>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control gelar" name="gelar_b[]" >
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="bidang_studi"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Bidang Studi:') }}</label>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control bidang_studi" name="bidang_studi[]"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="tanggal_mulai"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Tanggal Mulai:') }}</label>
-                                        <div class="col-md-3">
-                                            <input type="date" class="form-control tanggal_mulai"
-                                                name="tanggal_mulai[]" required>
-                                        </div>
-                                        <label for="tanggal_akhir"
-                                            class="col-md-2 col-form-label text-md-end">{{ __('Tanggal Akhir:') }}</label>
-                                        <div class="col-md-2">
-                                            <input type="date" class="form-control tanggal_akhir"
-                                                name="tanggal_akhir[]" required>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="deskripsi"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Deskripsi:') }}</label>
-                                        <div class="col-md-6">
-                                            <textarea class="form-control deskripsi" name="deskripsi[]" required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                                 <!-- File Riwayat Kerja form taro dibawah sini -->
 
 
                                 <button type="button" class="btn btn-primary" id="prev4">Kembali</button>
-                                <button type="button" id="tambah-riwayat-pekerjaan" class="btn btn-primary">Tambah Riwayat
-                                    Pendidikan</button>
                                 <button type="submit" class="btn btn-primary" id="next4">Lanjut</button>
                             </div>
 
@@ -453,7 +410,7 @@
                                         <font size="6px">Pengalaman</font>
                                     </strong></center>
                                 <br>
-
+                                   <p>test</p>
                                 <!-- File Riwayat Kerja form taro dibawah sini -->
 
 
